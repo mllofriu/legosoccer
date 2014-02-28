@@ -6,11 +6,11 @@
  */
 
 #include "cmdcommunicator.h"
-#include "cmdreceiver.h"
+#include "../strategy/strategycontroller.h"
 
 int main (int argc, char ** argv) {
-	CmdCommunicator * comm = new CmdCommunicator();
-	comm->addReceiver(new CmdReceiver());
+	Communicator * comm = new CmdCommunicator();
+	comm->setReceiver(new StrategyController());
 
 	comm->run();
 

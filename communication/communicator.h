@@ -10,20 +10,16 @@
 
 #include <vector>
 
-#include "receiver.h"
+#include "../strategy/strategycontroller.h"
 #include "message.h"
+#include "receiver.h"
 
 class Communicator {
 public:
 	/**
 	 * Method to subscribe a listener for new messages
 	 */
-	void addReceiver(Receiver * r);
-
-	/**
-	 * Clean the list of listeners.
-	 */
-	void clearReceivers();
+	void setReceiver(Receiver * sctrl);
 
 	/**
 	 * Method to send a message through the specified channel
@@ -38,13 +34,9 @@ public:
 	/**
 	 * Run cycle for the thread. Receives a msg and tells all subscribers
 	 */
-	void run();
-
+	virtual void run();
 private:
-	/**
-	 * List of subscribers
-	 */
-	std::vector<Receiver *> subscribers;
+	Receiver * receiver;
 };
 
 #endif /* COMMUNICATOR_H_ */

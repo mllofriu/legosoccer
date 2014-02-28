@@ -13,15 +13,15 @@
 CmdCommunicator::CmdCommunicator() {
 }
 
-void CmdCommunicator::sendMsg(Message * msg) {
-	if (typeid(msg) == typeid(StrMessage*)) {
-		std::cout << ((StrMessage*) msg)->toString();
-	}
+void CmdCommunicator::sendMsg(StrMessage* msg) {
+	std::cout << "Sending message " << msg->toString() << std::endl;
 }
 
-Message * CmdCommunicator::getNewMsg() {
+StrMessage * CmdCommunicator::getNewMsg() {
 	std::string msg;
 	std::cout << "Enter message: ";
 	std::cin >> msg;
-	return (Message *) (new StrMessage(msg));
+	return new StrMessage(msg);
 }
+
+

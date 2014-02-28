@@ -7,20 +7,14 @@
 
 #include "communicator.h"
 
-void Communicator::addReceiver(Receiver* r) {
-	subscribers.push_back(r);
-}
-
-void Communicator::clearReceivers() {
-	subscribers.clear();
+void Communicator::setReceiver(Receiver * s) {
+	this->receiver = s;
 }
 
 void Communicator::run() {
-	while (true) {
-		Message * msg = getNewMsg();
-		for (std::vector<Receiver*>::iterator iter = subscribers.begin();
-				iter != subscribers.end(); iter++) {
-			(*iter)->rcvMsg(msg);
-		}
+	while(true){
+		Message * m = getNewMsg();
+		m->dispatchToReceiver(receiver);
+//		receiver->rcvMsg(m);
 	}
 }

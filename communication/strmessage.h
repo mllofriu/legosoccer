@@ -12,10 +12,14 @@
 
 #include "message.h"
 
-class StrMessage : Message {
+class Message;
+
+class StrMessage : public Message {
 public:
 	StrMessage(std::string str);
 	std::string toString();
+
+	virtual void dispatchToReceiver(Receiver * r);
 
 private:
 	std::string content;

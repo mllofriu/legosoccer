@@ -5,11 +5,19 @@
  *      Author: ludo
  */
 
+#include <iostream>
+
 #include "strategycontroller.h"
 
+
 void StrategyController::rcvMsg(Message* msg) {
+	std::cout << "Received a generic message" << std::endl;
 	setActiveStrategy(msg);
 	performStrategy(msg);
+}
+
+void StrategyController::rcvMsg(StrMessage * msg){
+	std::cout << "Strategy controller received a message: " << msg->toString() << std::endl;
 }
 
 void StrategyController::setActiveStrategy(Message* msg) {
@@ -17,4 +25,8 @@ void StrategyController::setActiveStrategy(Message* msg) {
 }
 
 void StrategyController::performStrategy(Message* msg) {
+}
+
+void StrategyController::performStrategy(StrMessage* msg) {
+
 }

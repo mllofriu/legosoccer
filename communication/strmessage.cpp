@@ -14,3 +14,6 @@ std::string StrMessage::toString() {
 	return content;
 }
 
+void StrMessage::dispatchToReceiver(Receiver* r) {
+	r->rcvMsg(this);
+}

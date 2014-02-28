@@ -8,8 +8,15 @@
 #ifndef MESSAGE_H_
 #define MESSAGE_H_
 
+#include "receiver.h"
+
 class Message {
 
+public:
+	/**
+	 * Method due to double dispatch techniques
+	 */
+	virtual void dispatchToReceiver(Receiver * r) = 0;
 };
 
 

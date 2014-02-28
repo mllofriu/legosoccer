@@ -9,14 +9,17 @@
 #define CMDCOMMUNICATOR_H_
 
 #include "communicator.h"
+#include "strmessage.h"
 
-class CmdCommunicator: public Communicator {
+class CmdCommunicator : public Communicator {
 public:
 	CmdCommunicator();
 
-	virtual void sendMsg(Message * msg);
+	void sendMsg(StrMessage * msg);
 
-	virtual Message * getNewMsg();
+	virtual void sendMsg(Message * msg) { };
+
+	StrMessage * getNewMsg();
 
 };
 
